@@ -1,4 +1,59 @@
 // Application de Scanner de Code-Barres pour Rendez-vous
+
+// Base de données intégrée (solution de secours pour éviter les problèmes CORS)
+const appointmentsData = [
+  {
+    "barcode": "123456789012",
+    "patientName": "Jean Dupont",
+    "doctorName": "Dr. Martin",
+    "date": "2025-10-28",
+    "time": "09:30",
+    "department": "Cardiologie",
+    "room": "201",
+    "notes": "Consultation de suivi"
+  },
+  {
+    "barcode": "234567890123",
+    "patientName": "Marie Lambert",
+    "doctorName": "Dr. Rousseau",
+    "date": "2025-10-28",
+    "time": "10:15",
+    "department": "Dermatologie",
+    "room": "105",
+    "notes": "Première consultation"
+  },
+  {
+    "barcode": "345678901234",
+    "patientName": "Pierre Leroy",
+    "doctorName": "Dr. Bernard",
+    "date": "2025-10-28",
+    "time": "14:00",
+    "department": "Orthopédie",
+    "room": "302",
+    "notes": "Contrôle post-opératoire"
+  },
+  {
+    "barcode": "456789012345",
+    "patientName": "Sophie Moreau",
+    "doctorName": "Dr. Petit",
+    "date": "2025-10-29",
+    "time": "08:45",
+    "department": "Pédiatrie",
+    "room": "110",
+    "notes": "Vaccination"
+  },
+  {
+    "barcode": "567890123456",
+    "patientName": "Luc Blanchard",
+    "doctorName": "Dr. Dubois",
+    "date": "2025-10-29",
+    "time": "11:00",
+    "department": "Ophtalmologie",
+    "room": "205",
+    "notes": "Examen de la vue"
+  }
+];
+
 let appointments = [];
 let isScanning = false;
 
@@ -17,13 +72,22 @@ const lastScanned = document.getElementById('lastScanned');
 // Charger la base de données JSON au démarrage
 async function loadAppointments() {
     try {
+        // Essayer de charger depuis le fichier JSON externe
         const response = await fetch('appointments.json');
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         appointments = await response.json();
-        console.log('Base de données chargée:', appointments.length, 'rendez-vous');
+        console.log('✅ Base de données chargée depuis appointments.json:', appointments.length, 'rendez-vous');
         updateStatus('Base de données chargée - Prêt à scanner');
     } catch (error) {
-        console.error('Erreur lors du chargement de la base de données:', error);
-        showError('Erreur lors du chargement de la base de données');
+        // En cas d'erreur (CORS, fichier non trouvé, etc.), utiliser les données intégrées
+        console.warn('⚠️ Impossible de charger appointments.json:', error.message);
+        console.log('📊 Utilisation de la base de données intégrée');
+        appointments = appointmentsData;
+        updateStatus(`Base de données intégrée chargée (${appointments.length} rendez-vous) - Prêt à scanner`);
     }
 }
 
