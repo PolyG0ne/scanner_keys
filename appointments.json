@@ -1,0 +1,52 @@
+[
+  {
+    "barcode": "123456789012",
+    "patientName": "Jean Dupont",
+    "doctorName": "Dr. Martin",
+    "date": "2025-10-28",
+    "time": "09:30",
+    "department": "Cardiologie",
+    "room": "201",
+    "notes": "Consultation de suivi"
+  },
+  {
+    "barcode": "234567890123",
+    "patientName": "Marie Lambert",
+    "doctorName": "Dr. Rousseau",
+    "date": "2025-10-28",
+    "time": "10:15",
+    "department": "Dermatologie",
+    "room": "105",
+    "notes": "Première consultation"
+  },
+  {
+    "barcode": "345678901234",
+    "patientName": "Pierre Leroy",
+    "doctorName": "Dr. Bernard",
+    "date": "2025-10-28",
+    "time": "14:00",
+    "department": "Orthopédie",
+    "room": "302",
+    "notes": "Contrôle post-opératoire"
+  },
+  {
+    "barcode": "456789012345",
+    "patientName": "Sophie Moreau",
+    "doctorName": "Dr. Petit",
+    "date": "2025-10-29",
+    "time": "08:45",
+    "department": "Pédiatrie",
+    "room": "110",
+    "notes": "Vaccination"
+  },
+  {
+    "barcode": "567890123456",
+    "patientName": "Luc Blanchard",
+    "doctorName": "Dr. Dubois",
+    "date": "2025-10-29",
+    "time": "11:00",
+    "department": "Ophtalmologie",
+    "room": "205",
+    "notes": "Examen de la vue"
+  }
+]

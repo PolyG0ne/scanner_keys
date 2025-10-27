@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scanner de Rendez-vous</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@ericblade/quagga2@1.8.4/dist/quagga.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Scanner de Code-Barres</h1>
+            <p class="subtitle">Scan pour consulter les rendez-vous</p>
+        </header>
+
+        <div class="scanner-section">
+            <div id="scanner-container">
+                <div id="interactive" class="viewport"></div>
+            </div>
+
+            <div class="controls">
+                <button id="startButton" class="btn btn-primary">Démarrer le Scanner</button>
+                <button id="stopButton" class="btn btn-secondary" disabled>Arrêter le Scanner</button>
+            </div>
+
+            <div class="manual-input">
+                <input type="text" id="manualBarcode" placeholder="Ou entrez le code-barres manuellement">
+                <button id="searchButton" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+
+        <div id="result-section" class="result-section hidden">
+            <h2>Informations du Rendez-vous</h2>
+            <div id="appointmentDetails" class="appointment-card"></div>
+        </div>
+
+        <div id="error-section" class="error-section hidden">
+            <p id="errorMessage"></p>
+        </div>
+
+        <div class="status">
+            <p id="statusMessage">Prêt à scanner</p>
+            <p id="lastScanned" class="last-scanned"></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
